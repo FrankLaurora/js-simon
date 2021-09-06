@@ -21,6 +21,13 @@ setTimeout(
     function(){
         while (userGuesses.length < 5) {
             let numGuess = parseInt(prompt("Inserisci un numero tra quelli mostrati."));
+
+            //controllo che l'utente abbia inserito un numero e, in caso contrario, chiedo di reinserirlo
+            while(isNaN(numGuess)) {
+                alert("Attento! Devi inserire un numero.")
+                numGuess = parseInt(prompt("Inserisci un numero tra quelli mostrati."));
+            }
+
             if(!userGuesses.includes(numGuess)) {
                 userGuesses.push(numGuess);           
             } else {
@@ -36,6 +43,6 @@ setTimeout(
         }
 
         alert("Hai indovinato " + score + " numeri. I numeri da indovinare erano: " + rndNums + ". I numeri che hai inserito sono " + userGuesses + ".");
-    }, 30000
+    }, 1000
 );
 
