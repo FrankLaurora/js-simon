@@ -16,7 +16,25 @@ var userGuesses = [];
 //inizializzo un contatore per i numeri indovinati
 var score = 0;
 
-//imposto un timer che dopo 30 secondi faccia comparire i cinque prompt
+//inizializzo un contatore per il conto alla rovescia da 30 econdi
+var clock = 30;
+
+var startingTime = document.getElementById("countdown");
+
+startingTime.innerHTML = clock;
+
+//creo una funzione che stampi dinamicamente il clock in pagina
+var countdown = setInterval(
+    function(){
+        if(clock > 0){
+            clock--;
+            document.getElementById("countdown").innerHTML = clock;
+        } else {
+            clearInterval(countdown);
+        }
+}, 1000);
+
+//imposto un timer che dopo (clock * 1000) secondi faccia comparire i cinque prompt
 setTimeout(
     function(){
         while (userGuesses.length < 5) {
@@ -43,6 +61,5 @@ setTimeout(
         }
 
         alert("Hai indovinato " + score + " numeri. I numeri da indovinare erano: " + rndNums + ". I numeri che hai inserito sono " + userGuesses + ".");
-    }, 1000
+    }, (clock * 1000) + 100
 );
-
